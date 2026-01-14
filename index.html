@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maksudul Munna</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body{
+  margin:0;
+  background:#f4f6fa;
+  color:#111;
+}
+
+/* Header */
+header{
+  padding:16px 20px;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+header h3{
+  margin:0;
+  font-weight:700;
+}
+
+/* Main */
+.container{
+  max-width:420px;
+  margin:auto;
+  padding:24px 16px 40px;
+}
+
+/* Profile */
+.profile{
+  text-align:center;
+  margin-top:20px;
+}
+
+.avatar{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:auto;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile h1{
+  margin:16px 0 6px;
+  font-size:24px;
+}
+
+.profile p{
+  margin:0;
+  color:#666;
+  font-size:14px;
+}
+
+/* Section title */
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:40px 0 16px;
+  font-weight:600;
+}
+
+/* Card */
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  margin-bottom:16px;
+}
+
+/* Academic cards */
+.exam{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.exam h4{
+  margin:0 0 4px;
+}
+
+.exam span{
+  font-size:13px;
+  color:#777;
+}
+
+.badge{
+  background:#e7f7ee;
+  color:#2f8f5b;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+.score{
+  font-size:22px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+/* Admission list */
+.admission{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.admission:last-child{
+  border-bottom:none;
+}
+
+.status{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+.rank{ background:#eef4ff; color:#3a5bdc; }
+.pending{ background:#fff5dc; color:#c08a00; }
+.fail{ background:#fdecec; color:#c0392b; }
+.na{ background:#f0f0f0; color:#777; }
+
+/* Memories */
+.memories{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.memory-box{
+  height:120px;
+  border-radius:14px;
+  background:#eef1f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#aaa;
+  font-size:13px;
+  overflow:hidden;
+}
+
+.memory-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:30px 10px;
+  font-size:13px;
+  color:#888;
+}
+  .memory-box {
+  position: relative;
+  height: 150px;
+  border-radius: 14px;
+  overflow: hidden;
+  background:#eef1f6;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  color:#fff;
+  font-size:13px;
+}
+
+.memory-box img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.memory-box .caption {
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:6px 10px;
+  background: rgba(0,0,0,0.4);
+  font-size:13px;
+  text-align:center;
+}
+  .memories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.memory-box {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #eef1f6;
+  display: flex;
+  align-items: flex-end; /* keeps caption at bottom */
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  aspect-ratio: 1/1; /* keeps boxes square and uniform */
+}
+
+.memory-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memory-box .caption {
+  width: 100%;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.4);
+  font-size: 13px;
+  text-align: center;
+  box-sizing: border-box;
+}
+  
+</style>
+</head>
+
+<body>
+
+<header>
+  <h3>M</h3>
+</header>
+
+<div class="container">
+
+  <div class="profile">
+    <div class="avatar">
+      <img src="https://i.ibb.co.com/V06YcWjs/IMG-1767965910057.jpg" alt="Maksudul Munna">
+    </div>
+    <h1>Maksudul Munna</h1>
+    <p>20 Years Old • Student • Dreamer • Writer </p>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="card">
+    <div class="exam">
+      <div>
+        <h5>"Hi, I’m Maksudul Munna— a curious learner and passionate explorer of knowledge. I enjoy diving into academics, discovering new ideas, and sharing what I learn. Beyond the books, I like [ Reading ,coding,storytelling always seeking ways to grow and make an impact."</h5>
+        
+      
+    </div>
+  </div>
+
+  <div class="section-title">📘 Academic Results</div>
+
+  <div class="card">
+    <div class="exam">
+      <div>
+        <h4>SSC Examination</h4>
+        <span>Result</span>
+        <div class="score">GPA 5.00 <small>/ 5.00</small></div>
+      </div>
+      <div class="badge">Completed</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="exam">
+      <div>
+        <h4>HSC Examination</h4>
+        <span>Result</span>
+        <div class="score">GPA 5.00 <small>/ 5.00</small></div>
+      </div>
+      <div class="badge">Completed</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="exam">
+      <div>
+        <h4>SSC & HSC</h4>
+        <span>Completed with scholarship</span>
+        <div <small>Both SSC & HSC</small></div>
+      </div>
+      <div class="badge">Scholarship</div>
+    </div>
+  </div>
+
+  <div class="section-title">🎓 Admission Results</div>
+
+  <div class="card">
+    <div class="admission">
+      <span>Jagannath University</span>
+      <span class="status rank">6798th</span>
+    </div>
+    <div class="admission">
+      <span>Jahangirnagar University</span>
+      <span class="status rank">1589th</span>
+    </div>
+    <div class="admission">
+      <span>Chittagong University</span>
+      <span class="status rank">5886th</span>
+    </div>
+    <div class="admission">
+      <span>SUST</span>
+      <span class="status pending">Pending</span>
+    </div>
+    <div class="admission">
+      <span>Comilla University</span>
+      <span class="status pending">Pending</span>
+    </div>
+    <div class="admission">
+      <span>GST</span>
+      <span class="status pending">Pending</span>
+    </div>
+    <div class="admission">
+      <span>University of Dhaka</span>
+      <span class="status fail">Didn't go as planned</span>
+    </div>
+    <div class="admission">
+      <span>BUET</span>
+      <span class="status na">Didn't apply</span>
+    </div>
+    <div class="admission">
+      <span>Medical College</span>
+      <span class="status na">Didn't apply</span>
+    </div>
+  </div>
+
+  <div class="section-title">📸 Memories</div>
+
+  <div class="memories">
+    
+    <div class="memory-box">
+  <img src="https://i.ibb.co.com/JRqcSP2S/IMG-20251230-015205-005.webp">
+  <div class="caption">JU Admission</div>
+    </div>
+    
+    <div class="memory-box">
+  <img src="https://i.ibb.co.com/TDP58Zbt/FB-IMG-3047310916701312656.jpg">
+  <div class="caption">JU Campus</div>
+    </div>
+    
+    <div class="memory-box">
+  <img src="https://i.ibb.co.com/Q75zKPYh/retouch-2026010221285985.jpg">
+  <div class="caption">DU Campus</div>
+    </div>
+    
+   
+       
+</div>
+
+<footer>
+  © 2026 Maksudul Munna. All rights reserved.
+</footer>
+
+</body>
+</html>
