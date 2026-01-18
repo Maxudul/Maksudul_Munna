@@ -22,7 +22,6 @@ header{
   background:#fff;
   box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
-
 header h3{
   margin:0;
   font-weight:700;
@@ -40,7 +39,6 @@ header h3{
   text-align:center;
   margin-top:20px;
 }
-
 .avatar{
   width:140px;
   height:140px;
@@ -49,18 +47,15 @@ header h3{
   margin:auto;
   box-shadow:0 12px 30px rgba(0,0,0,0.15);
 }
-
 .avatar img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-
 .profile h1{
   margin:16px 0 6px;
   font-size:24px;
 }
-
 .profile p{
   margin:0;
   color:#666;
@@ -85,22 +80,24 @@ header h3{
   margin-bottom:16px;
 }
 
-/* Academic cards */
+/* Exam */
 .exam{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-
 .exam h4{
   margin:0 0 4px;
 }
-
 .exam span{
   font-size:13px;
   color:#777;
 }
-
+.score{
+  font-size:22px;
+  font-weight:700;
+  margin-top:6px;
+}
 .badge{
   background:#e7f7ee;
   color:#2f8f5b;
@@ -109,13 +106,7 @@ header h3{
   font-size:12px;
 }
 
-.score{
-  font-size:22px;
-  font-weight:700;
-  margin-top:6px;
-}
-
-/* Admission list */
+/* Admission */
 .admission{
   display:flex;
   justify-content:space-between;
@@ -123,17 +114,14 @@ header h3{
   padding:10px 0;
   border-bottom:1px solid #eee;
 }
-
 .admission:last-child{
   border-bottom:none;
 }
-
 .status{
   padding:4px 10px;
   border-radius:999px;
   font-size:12px;
 }
-
 .rank{ background:#eef4ff; color:#3a5bdc; }
 .pending{ background:#fff5dc; color:#c08a00; }
 .fail{ background:#fdecec; color:#c0392b; }
@@ -142,26 +130,79 @@ header h3{
 /* Memories */
 .memories{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   gap:12px;
 }
-
 .memory-box{
-  height:120px;
+  position:relative;
+  aspect-ratio:1/1;
   border-radius:14px;
-  background:#eef1f6;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#aaa;
-  font-size:13px;
   overflow:hidden;
+  background:#eef1f6;
 }
-
 .memory-box img{
   width:100%;
   height:100%;
   object-fit:cover;
+}
+.caption{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:6px 10px;
+  background:rgba(0,0,0,0.4);
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+}
+
+/* Timeline */
+.timeline{
+  position:relative;
+  padding-left:26px;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:#e5e8f0;
+}
+.timeline-item{
+  position:relative;
+  padding-bottom:30px;
+}
+.timeline-item:last-child{
+  padding-bottom:0;
+}
+.timeline-item .dot{
+  position:absolute;
+  left:-1px;
+  top:4px;
+  width:14px;
+  height:14px;
+  background:#3a5bdc;
+  border-radius:50%;
+  box-shadow:0 0 0 4px #eef4ff;
+}
+.timeline-item .content h4{
+  margin:4px 0;
+}
+.timeline-item .content small{
+  color:#3a5bdc;
+  font-weight:500;
+}
+.timeline-item .content p{
+  margin:6px 0 0;
+  font-size:14px;
+  color:#555;
+}
+.timeline-item .year{
+  font-size:13px;
+  color:#777;
 }
 
 /* Footer */
@@ -171,70 +212,6 @@ footer{
   font-size:13px;
   color:#888;
 }
-  .memory-box {
-  position: relative;
-  height: 150px;
-  border-radius: 14px;
-  overflow: hidden;
-  background:#eef1f6;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  color:#fff;
-  font-size:13px;
-}
-
-.memory-box img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.memory-box .caption {
-  position: absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:6px 10px;
-  background: rgba(0,0,0,0.4);
-  font-size:13px;
-  text-align:center;
-}
-  .memories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
-}
-
-.memory-box {
-  position: relative;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #eef1f6;
-  display: flex;
-  align-items: flex-end; /* keeps caption at bottom */
-  justify-content: center;
-  color: #fff;
-  font-size: 13px;
-  aspect-ratio: 1/1; /* keeps boxes square and uniform */
-}
-
-.memory-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.memory-box .caption {
-  width: 100%;
-  padding: 6px 10px;
-  background: rgba(0,0,0,0.4);
-  font-size: 13px;
-  text-align: center;
-  box-sizing: border-box;
-}
-  
 </style>
 </head>
 
@@ -248,37 +225,33 @@ footer{
 
   <div class="profile">
     <div class="avatar">
-      <img src="https://i.ibb.co.com/V06YcWjs/IMG-1767965910057.jpg" alt="Maksudul Munna">
+      <img src="https://i.ibb.co/V06YcWjs/IMG-1767965910057.jpg" alt="Maksudul Munna">
     </div>
     <h1>Maksudul Munna</h1>
-    <p>20 Years Old • Student • Dreamer • Writer </p>
+    <p>20 Years Old • Student • Dreamer • Writer</p>
   </div>
-  <br>
-  <!-- Social Media Section -->
-<div style="text-align: center; margin: 40px 0;">
-  <a href="https://m.me/maxudulmunna73" target="_blank" style="margin: 0 10px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Facebook_icon_%28black%29.svg" alt="Facebook" style="width:40px;">
-  </a>
-  <a href="https://www.instagram.com/maxudul_munna" target="_blank" style="margin: 0 10px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg" alt="Instagram" style="width:40px;">
-  </a>
-  <a href="https://wa.me/+8801687640259" target="_blank" style="margin: 0 10px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/WhatsApp_font_awesome.svg" alt="WhatsApp" style="width:40px;">
-  </a>
-  <a href="https://pin.it/5MvrxCgUi" target="_blank" style="margin: 0 10px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest" style="width:40px;">
-  </a>
-</div>
-  <br>
-  <br>
-  <div class="card">
-    <div class="exam">
-      <div>
-        <h5>"Hi, I’m Maksudul Munna— a curious learner and passionate explorer of knowledge. I enjoy diving into academics, discovering new ideas, and sharing what I learn. Beyond the books, I like Reading ,coding,storytelling always seeking ways to grow and make an impact."</h5>
-        
-      
-    </div>
 
+  <div style="text-align:center; margin:40px 0;">
+    <a href="https://m.me/maxudulmunna73" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Facebook_icon_%28black%29.svg" style="width:40px;">
+    </a>
+    <a href="https://www.instagram.com/maxudul_munna" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/CIS-A2K_Instagram_Icon_%28Black%29.svg" style="width:40px;">
+    </a>
+    <a href="https://wa.me/8801687640259" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/WhatsApp_font_awesome.svg" style="width:40px;">
+    </a>
+    <a href="https://pin.it/5MvrxCgUi" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" style="width:40px;">
+    </a>
+  </div>
+
+  <div class="card">
+    <p>
+      Hi, I’m Maksudul Munna — a curious learner and passionate explorer of knowledge.
+      I enjoy diving into academics, discovering new ideas, and sharing what I learn.
+      Beyond the books, I love reading, coding, and storytelling.
+    </p>
   </div>
 
   <div class="section-title">📘 Academic Results</div>
@@ -287,8 +260,7 @@ footer{
     <div class="exam">
       <div>
         <h4>SSC Examination</h4>
-        <span>Result</span>
-        <div class="score">GPA 5.00 <small>/ 5.00</small></div>
+        <div class="score">GPA 5.00 / 5.00</div>
       </div>
       <div class="badge">Completed</div>
     </div>
@@ -298,19 +270,17 @@ footer{
     <div class="exam">
       <div>
         <h4>HSC Examination</h4>
-        <span>Result</span>
-        <div class="score">GPA 5.00 <small>/ 5.00</small></div>
+        <div class="score">GPA 5.00 / 5.00</div>
       </div>
       <div class="badge">Completed</div>
     </div>
   </div>
-  
+
   <div class="card">
     <div class="exam">
       <div>
         <h4>SSC & HSC</h4>
         <span>Completed with scholarship</span>
-        <div <small>Both SSC & HSC</small></div>
       </div>
       <div class="badge">Scholarship</div>
     </div>
@@ -319,70 +289,72 @@ footer{
   <div class="section-title">🎓 Admission Results</div>
 
   <div class="card">
-    <div class="admission">
-      <span>Jagannath University</span>
-      <span class="status rank">6798th</span>
-    </div>
-    <div class="admission">
-      <span>Jahangirnagar University</span>
-      <span class="status rank">1589th</span>
-    </div>
-    <div class="admission">
-      <span>Chittagong University</span>
-      <span class="status rank">5886th</span>
-    </div>
-    <div class="admission">
-      <span>SUST</span>
-      <span class="status pending">Pending</span>
-    </div>
-    <div class="admission">
-      <span>Rajshahi University</span>
-      <span class="status pending">Pending</span>
-    </div>
-    <div class="admission">
-      <span>Comilla University</span>
-      <span class="status pending">Pending</span>
-    </div>
-    <div class="admission">
-      <span>GST</span>
-      <span class="status pending">Pending</span>
-    </div>
-    <div class="admission">
-      <span>University of Dhaka</span>
-      <span class="status fail">Didn't go as planned</span>
-    </div>
-    <div class="admission">
-      <span>BUET</span>
-      <span class="status na">Didn't apply</span>
-    </div>
-    <div class="admission">
-      <span>Medical College</span>
-      <span class="status na">Didn't apply</span>
-    </div>
+    <div class="admission"><span>Jagannath University</span><span class="status rank">6798th</span></div>
+    <div class="admission"><span>Jahangirnagar University</span><span class="status rank">1589th</span></div>
+    <div class="admission"><span>Chittagong University</span><span class="status rank">5886th</span></div>
+    <div class="admission"><span>SUST</span><span class="status pending">Pending</span></div>
+    <div class="admission"><span>Rajshahi University</span><span class="status pending">Pending</span></div>
+    <div class="admission"><span>Comilla University</span><span class="status pending">Pending</span></div>
+    <div class="admission"><span>GST</span><span class="status pending">Pending</span></div>
+    <div class="admission"><span>University of Dhaka</span><span class="status fail">Didn't go as planned</span></div>
+    <div class="admission"><span>BUET</span><span class="status na">Didn't apply</span></div>
+    <div class="admission"><span>Medical College</span><span class="status na">Didn't apply</span></div>
   </div>
 
   <div class="section-title">📸 Memories</div>
 
   <div class="memories">
-    
     <div class="memory-box">
-  <img src="https://i.ibb.co.com/JRqcSP2S/IMG-20251230-015205-005.webp">
-  <div class="caption">JU Admission</div>
+      <img src="https://i.ibb.co/JRqcSP2S/IMG-20251230-015205-005.webp" alt="JU Admission">
+      <div class="caption">JU Admission</div>
     </div>
-    
     <div class="memory-box">
-  <img src="https://i.ibb.co.com/TDP58Zbt/FB-IMG-3047310916701312656.jpg">
-  <div class="caption">JU Campus</div>
+      <img src="https://i.ibb.co/TDP58Zbt/FB-IMG-3047310916701312656.jpg" alt="JU Campus">
+      <div class="caption">JU Campus</div>
     </div>
-    
     <div class="memory-box">
-  <img src="https://i.ibb.co.com/Q75zKPYh/retouch-2026010221285985.jpg">
-  <div class="caption">DU Campus</div>
+      <img src="https://i.ibb.co/Q75zKPYh/retouch-2026010221285985.jpg" alt="DU Campus">
+      <div class="caption">DU Campus</div>
     </div>
-  
-       
+  </div>
+
+  <div class="section-title">💼 Experience</div>
+
+  <div class="card timeline">
+
+    <div class="timeline-item">
+      <span class="dot"></span>
+      <div class="content">
+        <span class="year">2024 – Present</span>
+        <h4>Frontend Developer</h4>
+        <small>Creative Studio</small>
+        <p>Building responsive UI, smooth animations, and modern landing pages using HTML, CSS, and JavaScript.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="dot"></span>
+      <div class="content">
+        <span class="year">2023 – 2024</span>
+        <h4>Web Developer</h4>
+        <small>Startup Agency</small>
+        <p>Developed client websites, optimized performance, and implemented clean UI/UX designs.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <span class="dot"></span>
+      <div class="content">
+        <span class="year">2022 – 2023</span>
+        <h4>Junior Developer</h4>
+        <small>Freelance</small>
+        <p>Worked on small projects and landing pages while learning modern web development best practices.</p>
+      </div>
+    </div>
+
+  </div>
+
 </div>
- 
 
 <footer>
   © 2026 Maksudul Munna. All rights reserved.
